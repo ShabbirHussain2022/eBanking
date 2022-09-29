@@ -1,0 +1,59 @@
+﻿@model IEnumerable<eBanking.Models.Transaction>
+
+@{
+    ViewBag.Title = "All Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Transactions</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account1.AccountName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account1.AccountName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionID })
+
+        </td>
+    </tr>
+}
+
+</table>
